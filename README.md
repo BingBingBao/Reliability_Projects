@@ -59,3 +59,9 @@ Below is an initial plot comparing actual vs. predicted RUL for Engine 1 using t
 
 ![image](https://github.com/user-attachments/assets/1e17a843-77b8-4fc7-8ba7-329529d9b4aa)
 
+### LTSM + Sliding window
+
+Because Long Short-Term Memory (LSTM) networks are designed for sequential data
+
+CNN would forget the pattern in previous windows (It extracts features from each window separately but does not maintain memory across them)
+
