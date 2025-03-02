@@ -1,67 +1,144 @@
-# Reliability_Projects
+#  Reliability Projects:
+Fault Diagnosis and Predictive Maintenance are core topics in Reliability Engineering. These techniques aim to prevent unexpected failures and optimize maintenance schedules, reducing downtime and repair costs in industrial systems.
 
-## Project1: Remaining Useful Life (RUL) Prediction – NASA Turbofan Engine Data
-### Introduction
-This project focuses on predicting the Remaining Useful Life (RUL) of aircraft engines using the NASA C-MAPSS dataset. 
-The dataset provides time-series sensor readings from turbofan engines operating under various conditions, allowing for the development of predictive maintenance models.
+This repository contains two predictive maintenance projects using NASA datasets: 
+1. **Bearing Fault Diagnosis** → Analyzing vibration signals to detect faults in rotating machinery.
+2. **Turbofan Engine Remaining Useful Life (RUL) Prediction** → Predicting the remaining time before engine failure.
 
-The goal is to build machine learning (ML) and deep learning (CNN) models to estimate how many cycles an engine has before failure, enabling proactive maintenance and minimizing operational downtime.
+These projects apply **machine learning, deep learning, anomaly detection, and time-series forecasting** to improve industrial reliability.
 
-### Data
-In turbofan engine degradation monitoring, multiple sensors capture various physical properties of the engine over time. These sensor readings reflect engine wear and degradation trends, which are crucial for predicting the Remaining Useful Life (RUL).
 
-Dataset Structure: 
-- Training Set: Each engine is monitored from start until failure. The model learns patterns of degradation to predict failure trends.
-- Test Set: Each engine is monitored without failure information. The final recorded state of the engine is used for model evaluation.
-- RUL Set: Contains the actual Remaining Useful Life (RUL) for each engine in the test set, serving as the ground truth for performance assessment.
+## Project 1: NASA Bearing Fault Diagnosis 
+
+### **Data**
+- **Source**: NASA Prognostics Data Repository
+- **Description**: Run-to-failure vibration dataset for 4 bearings under real operating conditions.
+                   At the end of the experiment, an outer race failure occurred in Bearing 1. This dataset is ideal for fault diagnosis, anomaly detection, and failure prediction in rotating machinery.
+
+### **Objective**
+- Detect **early signs of degradation** using time-domain statistical features.
+- Apply **PCA, anomaly detection, and exponential modeling** to predict failure.
+- Train ML & DL models for **fault classification**.
+
+### **Methods**
+**Feature Extraction**: Extract time-domain features including *RMS*, *Standard Deviation*, *Kurtosis*, *P2P*, *clearance*, *entropy* etc. 12 features;
+
+**Dimensionality Reduction**: PCA (Principal Component Analysis) 
+
+**Anomaly Detection**: 3-sigma Method, Local Outlier Factor (LOF)
+
+**Failure Prediction**: Exponential degradation modeling   
+
+### 1. First, take a look at raw data 
+
+The dataset contains vibration recordings from **4 bearings** over their entire lifespan. Below shows the **first** and **last** sensor readings:
+
+- **Left:** The first 4 sensor recordings → Bearings in **normal condition**.
+- **Right:** The last 4 sensor recordings → Bearings at the **end of life** (Bearing 1 failed).
 
 <p align="center">
-    <img src="https://github.com/user-attachments/assets/f12668d5-3eb5-437f-b469-0df3d9729416" width="45%">
-    <img src="https://github.com/user-attachments/assets/6aba93bc-b8f0-485c-b0ef-9e3e023b90d9" width="45%">
+  <img src="https://github.com/user-attachments/assets/9b3eb4af-3218-439f-b5e3-6db67e697a11" width="48%">
+  <img src="https://github.com/user-attachments/assets/be11f7b9-3d0c-46a3-b21a-cd2ddc6de2b2" width="48%">
 </p>
 
-### Models:
-#### traditional ML models:
-- Linear Regression (Ridge/Lasso) for baseline analysis.
-- Random Forest for capturing non-linear degradation trends.
-- XGBoost for advanced feature interactions and boosting.
-#### DL model:
-- CNN model with a sliding window of size 30
-- Sliding window is to capture spatial patterns in the sensor reading
+### 2. Time-domain feature Extraction
 
-## Some Results:
+To understand the degradation patterns, I extract **statistical time-domain features** from vibration signals. These features help **detect early degradation** and track the health of the bearings.
 
-### Machine Learning Model Performance
+Below plots the **feature trends** for all four bearings throughout their operational lifetime:
 
-The table below summarizes the RMSE and Score of different machine learning models used for RUL prediction.
+The extracted features show clear degradation patterns, which can be used for predictive maintenance and early fault detection. By analyzing these trends, we can identify progressive wear before complete failure, allowing for timely interventions and reducing unplanned downtime.
 
-| Model              | RMSE     | Score        |
-|--------------------|---------|-------------|
-| **XGBoost**       | 21.929   | 2463.859097 |
-| **Random Forest** | 22.121   | 3322.241690 |
-| **Ridge Regression** | 23.874 | 2573.890882 |
-| **Linear Regression** | 23.874 | 2574.114833 |
-| **Lasso Regression**  | 23.877 | 2574.848880 |
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/86b803be-184b-45bc-9e6a-336a8ded18101" width="48%">
+  <img src="https://github.com/user-attachments/assets/047d2697-dac9-4a61-8444-8b7ef384a276" width="48%">
+</p>
 
-![image](https://github.com/user-attachments/assets/bf186083-386f-435e-93a6-49fdc11bd148)
+### 3. Anomaly Detection
 
-The XGBoost model demonstrates a good ability to capture RUL trends, as seen by the alignment between predicted (orange) and actual (blue) values. However, it can be seen that it overestimates the RUL value in many cases. 
+To detect abnormal behavior in bearings before failure, I first apply **statistical anomaly detection techniques**.
 
-### CNN Model + sliding window Appraoch
+####  **3-Sigma Method (Z-Score Based Anomaly Detection)**
+One of the most common threshold-based anomaly detection methods is the **3-Sigma Rule**:
 
-The CNN model aims to learn degradation patterns from sequential sensor data, leveraging local feature extraction for better prediction accuracy.
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/11bbd5b5-d743-407f-b28c-c09b33923cca" width="48%">
+  <img src="https://github.com/user-attachments/assets/4193e2db-0b01-434a-a366-3f286e5864d7" width="48%">
+</p>
 
-Currently the work has not been finished, requiring further adjustment and fine-tuning
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/734f2086-0d7f-41c2-bb36-b6637f7bcae6" width="48%">
+  <img src="https://github.com/user-attachments/assets/fa11144c-2a5a-48ce-92d0-a7dfb0667996" width="48%">
+</p>
 
-Preliminary Results:
+- Red dots indicate anomalies, which correspond to potential bearing failures.  
+- The trend shows an increase in anomalies as the bearing degrades
 
-Below is an initial plot comparing actual vs. predicted RUL for Engine 1 using the CNN model:
+### 4. PCA-Based Health Indicator & Exponential Failure Prediction
 
-![image](https://github.com/user-attachments/assets/1e17a843-77b8-4fc7-8ba7-329529d9b4aa)
+Principal Component Analysis (PCA) is applied to extract a single health indicator (PC1) from multiple vibration features. 
 
-### LTSM + Sliding window
+The degradation trend is then modeled using an exponential model to predict failure.
 
-Because Long Short-Term Memory (LSTM) networks are designed for sequential data
+- Blue Line: The smoothed PC1 degradation trend, derived from vibration signals.
+- Red Line: The exponential model fit, predicting the remaining useful life (RUL).
+- Dashed Line: The failure threshold, where the degradation crosses the critical limit.
 
-CNN would forget the pattern in previous windows (It extracts features from each window separately but does not maintain memory across them)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/c900108c-b60c-4b0d-ae34-5cbf20c5fabb" width="55%">
+</p>
+
+### 5. Apply this model to Bearing 2, 3, 4
+
+Bearing 2: 
+- Fitted parameters: a=0.000001, b=0.014899
+- Predicted failure at cycle: 1008.45
+
+Bearing 3: 
+- Fitted parameters: a=0.000001, b=0.015650
+- Predicted failure at cycle: 924.04
+  
+Bearing 4:
+- No clear degradation trend
+- no prediction
+
+
+Prediction plots: 
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/00070b7c-e3c6-4a51-818d-a0e86bd29f70" width="48%">
+  <img src="https://github.com/user-attachments/assets/552ae586-0daf-4bee-a608-cf8cdc87ff66" width="48%">
+</p>
+
+
+
+
+---
+
+
+
+
+##  Project 2: NASA Turbofan Engine RUL Prediction
+
+### **Data**
+- **Source**: [CMAPSS Turbofan Dataset](https://www.nasa.gov/content/prognostics-data-repository-cmaps)
+- **Description**: Simulated turbofan engine degradation with multiple sensor readings.
+
+### **Objective**
+- Predict the **Remaining Useful Life (RUL)** of turbofan engines.
+- Compare **traditional ML (Random Forest, Ridge Regression) vs. deep learning (LSTM, CNN)** models.
+
+### **Methods**
+
+ **Machine Learning**: Ridge Regression, Random Forest  
+**Deep Learning**: LSTM, CNN with time-series sliding window  
+**Evaluation Metrics**: RMSE, MAE, Score Function  
+
+### **Key Results**
+- **LSTM-based RUL model achieved high accuracy** in failure predictions.
+- **Feature selection improved model interpretability**.
+- **Sliding window approach enhanced time-series forecasting performance**.
+
+
+
 
