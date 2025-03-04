@@ -153,5 +153,56 @@ Prediction plots:
 - **Sliding window approach enhanced time-series forecasting performance**.
 
 
+### 1. First, look at the sensor data
+![image](https://github.com/user-attachments/assets/2422ca78-4f34-428b-8e6f-a113dbd4e7c4)
+
+![image](https://github.com/user-attachments/assets/6441b0c0-6c96-4ccf-9ebf-063cc62eb536)
+
+![image](https://github.com/user-attachments/assets/ebece7f1-df33-43bb-914a-bf38a4aa8ea9)
+
+### 2. Survive Analysis
+![image](https://github.com/user-attachments/assets/d2edebfe-e652-4899-9171-f96f70f419c6)
+
+### 3. Results
+
+| Model                | RMSE ↓ (Lower is better) | Score ↓ (Lower is better) |
+|----------------------|----------------------|----------------------|
+| **LSTM**            | **13.69**            | **359.45**           |
+| **CNN**             | **15.43**            | **474.34**           |
+| **XGBoost**         | 21.93                | 2463.86              |
+| **Random Forest**   | 22.12                | 3322.24              |
+| **Ridge Regression**| 23.87                | 2573.98              |
+| **Linear Regression**| 23.87               | 2574.11              |
+| **Lasso Regression**| 23.88                | 2574.85              |
+
+### Key Insights
+- LSTM has the best performance, achieving the lowest RMSE (13.69) and the best score (359.45), indicating it captures sequential dependencies effectively in vibration signals.
+
+- CNN is the second-best model, also performing significantly better than traditional ML models.
+  
+- XGBoost was the best ML model, but it's still far behind deep learning approaches.
+
+
+
+
+### CNN model Prediction:
+![image](https://github.com/user-attachments/assets/878aba30-5557-4d3c-8ffa-8dd0b0d89b74)
+
+![image](https://github.com/user-attachments/assets/96f0c798-523d-4e72-b8c8-5aa1c4aa5ae9)
+
+
+### LSTM model prediction:
+
+![image](https://github.com/user-attachments/assets/40a242ad-2d27-445a-ae81-92ff0a16bdd2)
+
+![image](https://github.com/user-attachments/assets/6f459d3a-3da2-4bb0-b82b-e9bdb0136d13)
+
+
+
+
+
+
+
+
 
 
