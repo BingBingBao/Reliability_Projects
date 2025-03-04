@@ -74,6 +74,19 @@ One of the most common threshold-based anomaly detection methods is the **3-Sigm
 - Red dots indicate anomalies, which correspond to potential bearing failures.  
 - The trend shows an increase in anomalies as the bearing degrades
 
+####  **Box-Plot Method**
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/c1d0e848-8c5e-4c24-975c-cef21d074692" width="48%">
+  <img src="https://github.com/user-attachments/assets/31cd9c52-f1fb-4a32-bc5d-bcb5a0295967" width="48%">
+</p>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/8c77d97e-8a17-4350-a334-f7c0a708cddc" width="48%">
+  <img src="https://github.com/user-attachments/assets/9b880c99-3e35-4abc-ad8c-dbd3b9b3aaf6" width="48%">
+</p>
+
+
 ### 4. PCA-Based Health Indicator & Exponential Failure Prediction
 
 Principal Component Analysis (PCA) is applied to extract a single health indicator (PC1) from multiple vibration features. 
