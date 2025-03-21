@@ -56,35 +56,12 @@ The extracted features show clear degradation patterns, which can be used for pr
 
 ### 3. Anomaly Detection
 
-To detect abnormal behavior in bearings before failure, I first apply **statistical anomaly detection techniques**.
+To detect abnormal behaviour in bearings before failure, I apply two methods **Isolation Forest** and **Autoencoder**.
 
-####  **3-Sigma Method (Z-Score Based Anomaly Detection)**
-One of the most common threshold-based anomaly detection methods is the **3-Sigma Rule**:
+![image](https://github.com/user-attachments/assets/ae0bd008-a0a0-4196-8e87-6bad295ff082)
+![image](https://github.com/user-attachments/assets/d21953ad-9628-47dd-bada-9eab961c7af4)
 
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/11bbd5b5-d743-407f-b28c-c09b33923cca" width="48%">
-  <img src="https://github.com/user-attachments/assets/4193e2db-0b01-434a-a366-3f286e5864d7" width="48%">
-</p>
 
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/734f2086-0d7f-41c2-bb36-b6637f7bcae6" width="48%">
-  <img src="https://github.com/user-attachments/assets/fa11144c-2a5a-48ce-92d0-a7dfb0667996" width="48%">
-</p>
-
-- Red dots indicate anomalies, which correspond to potential bearing failures.  
-- The trend shows an increase in anomalies as the bearing degrades
-
-####  **Box-Plot Method**
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/c1d0e848-8c5e-4c24-975c-cef21d074692" width="48%">
-  <img src="https://github.com/user-attachments/assets/31cd9c52-f1fb-4a32-bc5d-bcb5a0295967" width="48%">
-</p>
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/8c77d97e-8a17-4350-a334-f7c0a708cddc" width="48%">
-  <img src="https://github.com/user-attachments/assets/9b880c99-3e35-4abc-ad8c-dbd3b9b3aaf6" width="48%">
-</p>
 
 
 ### 4. PCA-Based Health Indicator & Exponential Failure Prediction
@@ -158,7 +135,6 @@ Prediction plots:
 
 ![image](https://github.com/user-attachments/assets/6441b0c0-6c96-4ccf-9ebf-063cc62eb536)
 
-![image](https://github.com/user-attachments/assets/ebece7f1-df33-43bb-914a-bf38a4aa8ea9)
 
 ### 2. Survive Analysis
 ![image](https://github.com/user-attachments/assets/d2edebfe-e652-4899-9171-f96f70f419c6)
