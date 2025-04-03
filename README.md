@@ -1,9 +1,11 @@
 #  Reliability Projects:
 Fault Diagnosis and Predictive Maintenance are core topics in Reliability Engineering. These techniques aim to prevent unexpected failures and optimize maintenance schedules, reducing downtime and repair costs in industrial systems.
 
-This repository contains two predictive maintenance projects using NASA datasets: 
-1. **Bearing Fault Diagnosis** → Analyzing vibration signals to detect faults in rotating machinery.
-2. **Turbofan Engine Remaining Useful Life (RUL) Prediction** → Predicting the remaining time before engine failure.
+This repository contains several **vibration-based condition monitoring** projects that apply machine learning, deep learning, anomaly detection, and time-series forecasting to improve industrial reliability.
+
+1. **Bearing Fault Diagnosis**
+2. **Turbofan Engine Remaining Useful Life (RUL) Prediction**
+3. **Circuit Breaker Vibration Signal Condition Monitoring**: Monitor short-duration, non-stationary vibration signals during circuit breaker operations. Signals are first transformed into Kurtogram images, then classified using Convolutional Neural Networks (CNNs). 
 
 These projects apply **machine learning, deep learning, anomaly detection, and time-series forecasting** to improve industrial reliability.
 
@@ -174,11 +176,37 @@ Prediction plots:
 ![image](https://github.com/user-attachments/assets/6f459d3a-3da2-4bb0-b82b-e9bdb0136d13)
 
 
+## Project 3: Circuit Breaker Vibration Signal Condition Monitoring
+
+### **Data**
+**Source**: ETHZurich High Voltage Laboratory - Circuit Breaker Vibration Dataset
+
+This dataset contains vibration signals recorded from circuit breakers during open/close operations, capturing non-stationary, transient behaviors critical for early fault detection.
+
+### **Methodology**
+
+- Vibration signals are transformed into Kurtogram images (frequency-based representations).
+
+- A Convolutional Neural Network (CNN) is trained to classify healthy vs. faulty operation.
+
+### **Results**
+![image](https://github.com/user-attachments/assets/45c9292f-8d1b-40e0-ace3-a9fefe13115f)
+
+Classification Report:
+               
+               precision    recall  f1-score   support
+
+           0       1.00      0.74      0.85       200
+           1       0.79      1.00      0.88       200
+
+    accuracy                           0.87       400
+   macro avg       0.90      0.87      0.87       400
+weighted avg       0.90      0.87      0.87       400
 
 
-
-
-
-
+- Accuracy: 87%
+- Macro Avg F1-score: 0.87
+- **Model successfully detects all faulty cases (Recall = 1.00)**
+- A well-designed CNN can effectively learn discriminative patterns from kurtogram images, but generalization may be affected by signal variability across different circuit breakers. Fine-tuning or incorporating domain adaptation techniques may help improve healthy case recall and reduce false positives.
 
 
