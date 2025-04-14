@@ -132,16 +132,10 @@ Prediction plots:
 - **Sliding window approach enhanced time-series forecasting performance**.
 
 
-### 1. First, look at the sensor data
-![image](https://github.com/user-attachments/assets/2422ca78-4f34-428b-8e6f-a113dbd4e7c4)
-
-![image](https://github.com/user-attachments/assets/6441b0c0-6c96-4ccf-9ebf-063cc62eb536)
-
-
-### 2. Survive Analysis
+### 1. Survive Analysis
 ![image](https://github.com/user-attachments/assets/d2edebfe-e652-4899-9171-f96f70f419c6)
 
-### 3. Results
+### 2. Model Prediction Results
 
 | Model                | RMSE ↓ (Lower is better) | Score ↓ (Lower is better) |
 |----------------------|----------------------|----------------------|
